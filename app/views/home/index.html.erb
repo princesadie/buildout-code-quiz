@@ -1,0 +1,39 @@
+<div class="jumbo">
+	<div class="jumbo-image">
+		<img src='<%=@request_sale_properties["properties"][10]["photos"][1]["url"]%>'>
+	</div>
+	<div class="jumbo-details">
+		<h1><%=@request_sale_properties["properties"][10]["address"]%></h1>
+		<h2><%= number_to_currency(@request_sale_properties["properties"][10]["sale_price_dollars"]) %></h2>
+		<a class="button" href="/property/<%= @request_sale_properties["properties"][10]['id']%>">MORE DETAILS</a>
+	</div>
+</div>
+
+<div class="main">
+	<div class="cards-container">
+		<% @request_sale_properties["properties"].each do |property| %>
+			<div class="card">
+				<div class="card-main-image">
+					<a href="/property/<%= property['id']%>">
+						<img src="<%= property["photos"].first["url"] %>">
+					</a>
+				</div>
+
+				<div class="card-quick-view">
+					<div class="detail">
+						<span>SALE PRICE</span>
+						<% if property["sale_price_dollars"] != nil %>
+							<strong class="green"><%= number_to_currency(property['sale_price_dollars']) %></strong>
+						<% else %>
+							<strong>NO SALE PRICE</strong>
+						<% end %>
+					</div>
+				</div>
+
+				<div class="card-action">
+					<span><%= property["address"] %></span>
+					<a href="/property/<%= property['id']%>">VIEW DETAILS</a>
+				</div>
+			</div>
+		<% end %>
+</div>

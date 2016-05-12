@@ -1,0 +1,67 @@
+<div class="main">
+	<div class="cards-container">
+		<% @property['property']['photos'].slice(1,4).each do |image| %>
+			<div class="show-image-container">
+					<img src="<%= image['url'] %>">
+			</div>
+		<% end %>
+
+		<div class="show-detail-container">
+			<div class="top">
+				<div class="top-left">
+					<h1><%= @property['property']['address'] %></h1>
+					<p><%= @property['property']['city']%>, <%= @property['property']['state'] %> <%= @property['property']['zip'] %></p>
+				</div>
+				<div class="top-right">
+					<span>SALE PRICE</span>
+					<% if @property['property']['sale_price_dollars'] != nil %>
+						<p class="price"><%= number_to_currency(@property['property']['sale_price_dollars']) %></p>
+					<% else %>
+						<p>NO SALE PRICE</p>
+					<% end %>
+				</div>
+			</div>
+			<div class="left">
+				<span>BUILDING SIZE: </span><strong><%= number_with_delimiter(@property['property']['building_size_sf'], :delimiter => ',') %> SF</strong>
+				</br>
+				<span>YEAR BUILT: </span><strong><%= @property['property']['year_built'] %></strong>
+				<ul>
+					<% @property['property']['lease_bullets'].each do |bullets| %>
+						<li><%= bullets %></li>
+					<% end %>
+				</ul>
+			</div>
+			<div class="right">
+				<span>DESCRIPTION</span>
+				<p><%= @property['property']['lease_description'] %></p>
+			</div>
+		</div>
+
+		<!-- ITERATE OVER EACH LEASE ATTACHED TO PROPERTY -->
+		<% @leases_belonging_to_property.each do |unit| %>
+			<div class="show-detail-container">
+				<div class="top">
+					<div class="top-left">
+						<h1><%= unit["address2"] %></h1>
+						<p>SF <%= unit["min_divisible_sf"]%> - <%= unit["max_contiguous_sf"] %></p>
+					</div>
+					<div class="top-right">
+						<span>LEASE RATE</span>
+						<p class="price"><%=number_to_currency(unit["price_per_sf_per_year"]) %> SF/yr</p>
+					</div>
+				</div>
+				<div class="left">
+					<% if unit['floor_plan_url'] != "" %>
+						<img src="<%= unit['floor_plan_url']%>">
+					<% end %>
+				</div>
+				<div class="right">
+					<% if unit['description'] != "" %>
+						<span>DESCRIPTION</span>
+						<p><%= unit['description'] %></p>
+					<% end %>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>
