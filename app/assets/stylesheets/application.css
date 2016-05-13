@@ -28,7 +28,7 @@
     left: 0;
     text-align:center;
     list-style: none;
-    background-color: #D64C4C;
+    background-color: #1E5FD3;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     z-index: 1;
   }
@@ -132,7 +132,7 @@
   }
 
   .card-action a:hover {
-    color: #D64C4C;
+    color: #1E5FD3;
     transition: all 0.5s;
   }
 
@@ -250,8 +250,8 @@
   .button {
     text-decoration: none;
     position: relative;
-    background: #D64C4C;
-    border: 1px solid #D64C4C;
+    background: #1E5FD3;
+    border: 1px solid #1E5FD3;
     font-size: 1.1rem;
     color: #fff;
     margin: 1rem 0;
