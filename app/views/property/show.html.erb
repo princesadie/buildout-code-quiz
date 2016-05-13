@@ -1,7 +1,9 @@
 <div class="main">
 	<div class="cards-container">
 		<div class="show-image-container">
-			<img border="0" src="//maps.googleapis.com/maps/api/staticmap?center=<%=@property['property']['latitude']%>,<%=@property['property']['longitude']%>&amp;zoom=13&amp;size=400x400&amp;markers=color:blue%7Clabel:*%7C<%=@property['property']['latitude']%>,<%=@property['property']['longitude']%>" alt="Berkeley, CA">
+			<a href="http://maps.google.com/?q=<%=@property['property']['latitude']%>,<%=@property['property']['longitude']%>">
+				<img border="0" src="//maps.googleapis.com/maps/api/staticmap?center=<%=@property['property']['latitude']%>,<%=@property['property']['longitude']%>&amp;zoom=13&amp;size=400x400&amp;markers=color:blue%7Clabel:*%7C<%=@property['property']['latitude']%>,<%=@property['property']['longitude']%>" alt="Berkeley, CA">
+			</a>
 		</div>
 		<% @property['property']['photos'].slice(1,3).each do |image| %>
 			<div class="show-image-container">
